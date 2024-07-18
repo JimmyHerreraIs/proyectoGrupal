@@ -2,6 +2,13 @@ package com.distribuida.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.distribuida.entities.Departamentos;
 
 @Repository
@@ -26,9 +33,11 @@ public class DepartamentosDAOImpl implements DepartamentosDAO {
 		return session.get(Departamentos.class, id);
 		
 	}
+	@Override
+	@Transactional
 	public void add(Departamentos departamentos) {
 		Session session=sessionFactory.getCurrentSession(); //
-		session.SaveOrUpdate(departamentos);
+		session.saveOrUpdate(departamentos);
 	}
 
 	@Override

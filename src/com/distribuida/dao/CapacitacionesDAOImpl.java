@@ -2,6 +2,13 @@ package com.distribuida.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.distribuida.entities.Capacitaciones;
 
 @Repository
@@ -26,9 +33,11 @@ public class CapacitacionesDAOImpl implements CapacitacionesDAO {
 		return session.get(Capacitaciones.class, id);
 		
 	}
+	@Override
+	@Transactional
 	public void add(Capacitaciones Capacitaciones) {
 		Session session=sessionFactory.getCurrentSession(); //
-		session.SaveOrUpdate(Capacitaciones);
+		session.saveOrUpdate(Capacitaciones);
 	}
 
 	@Override

@@ -1,11 +1,25 @@
 package com.distribuida.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name = "Departamentos")
 public class Departamentos {
 
 	
-	
-	private int departamento_id;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_departamentos")
+	private int idDepartamentos;
+	@Column(name="nombre")
 	private int nombre;
 	
 	//Simulacion de inyeccion de dependencias
@@ -13,14 +27,14 @@ public class Departamentos {
 
 	public Departamentos() {}
 	public Departamentos (int departamento_id,String nombre) {
-		this.departamento_id= departamento_id;
+		this.idDepartamentos= idDepartamentos;
 		this.nombre=this.getNombre(); 
 	}
 	public int getDepartamento_id() {
-		return departamento_id;
+		return idDepartamentos;
 	}
-	public void setDepartamento_id(int departamento_id) {
-		this.departamento_id = departamento_id;
+	public void setDepartamento_id(int idDepartamentos) {
+		this.idDepartamentos = idDepartamentos;
 	}
 	public int getNombre() {
 		return nombre;
@@ -30,7 +44,7 @@ public class Departamentos {
 	}
 	@Override
 	public String toString() {
-		return "Departamentos [departamento_id=" + departamento_id + ", nombre=" + nombre + "]";
+		return "Departamentos [departamento_id=" + idDepartamentos + ", nombre=" + nombre + "]";
 	}
 	
 	
